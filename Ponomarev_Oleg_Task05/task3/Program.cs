@@ -18,7 +18,7 @@ namespace task3
             }
             else
             {
-                throw new Exception("Это не треугольник");
+                throw new Exception("it's not a triangle");
             }
         }
 

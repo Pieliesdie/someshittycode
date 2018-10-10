@@ -5,7 +5,7 @@ namespace task4
 {
     public class MyString
     {
-        public readonly char[] mystring;
+        private readonly char[] mystring;
         public static MyString operator +(MyString one, MyString two)
         {
             char[] result = new char[one.mystring.Length + two.mystring.Length];
@@ -55,11 +55,7 @@ namespace task4
         }
         public MyString(string input)
         {
-            mystring = new char[input.Length];
-            for (int i = 0; i < input.Length; i++)
-            {
-                mystring[i] = input[i];
-            }                  
+            mystring = input.ToCharArray();          
         }
         public override string ToString()
         {
