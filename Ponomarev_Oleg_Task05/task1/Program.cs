@@ -7,7 +7,7 @@ namespace task1
         static void Main(string[] args)
         {
             User person = new User();
-            Console.WriteLine(person.GetInfo());
+            Console.WriteLine(person.ToString());
             Console.ReadKey();
         }
     }
