@@ -5,19 +5,17 @@ namespace Task2
 {
     public class Ring : Round
     {
-        static private bool checkRing(uint radius1, uint radius2)
+        static private void checkRing(uint radius1, uint radius2)
         {
-            return radius1 > radius2 ? false : true;
+            if( radius1 > radius2 )
+                throw new ArgumentException("External Radius can't be smaller than internal");
         }
         public new uint Radius
         {
             get => base.Radius;
             set
             {
-                if (!checkRing(value, ExternalRadius))
-                {
-                    throw new ArgumentException("internal Radius can't be larger than external");
-                }
+                checkRing(value, ExternalRadius);
                 base.Radius = value;
             }
         }
@@ -27,10 +25,7 @@ namespace Task2
             get => externalRound.Radius;
             set
             {
-                if (!checkRing(Radius,value))
-                {
-                    throw new ArgumentException("External Radius can't be smaller than internal");
-                }
+                checkRing(Radius, value);
                 externalRound.Radius = value;
             }
         }
