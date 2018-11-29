@@ -1,0 +1,62 @@
+﻿@model Common.User
+
+@{
+    ViewBag.Title = "Details";
+    var data = new BLL.UsersAndRewardsDataProvider(BLL.UsersAndRewardsDataProvider.MemoryType.DataBase);
+    var Rewards = data.GetUserRewardsByID(Model.ID);
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt>
+            Rewards:
+        </dt>
+        <dd>
+            @for (var i = 0; i < Rewards.Count; i++)
+            {
+                var r = Rewards[i];
+                <text>@r.Title</text>
+            }
+        </dd>
+    </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", Model) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
